@@ -13,139 +13,68 @@
 
   <style>
     :root{
-      /* palette */
-      --cream:#fff6ea;
-      --cream2:#fff2e1;
-      --cream3:#ffe9cf;
-      --pumpkin:#d96c06;
-      --burnt:#8c2f00;
-      --mustard:#d9a441;
-      --sage:#7aa874;
-      --wine:#7a1e3a;
-      --chestnut:#5a2d0c;
-      --text:#2f1c14;
-      --muted:#5b463a;
+      --pumpkin:#d96c06; --burnt:#8c2f00; --mustard:#d9a441; --sage:#7aa874;
+      --wine:#7a1e3a; --chestnut:#5a2d0c; --text:#2f1c14; --muted:#5b463a;
+      --cream:#fff6ea; --cream2:#fff2e1; --cream3:#ffe9cf;
     }
     *{box-sizing:border-box}
     html,body{
-      margin:0; height:100%; color:var(--text); font-family:'Nunito',system-ui,Segoe UI,Roboto,Arial,sans-serif;
-      /* darker ombré background */
+      margin:0;height:100%;color:var(--text);font-family:'Nunito',system-ui,Segoe UI,Roboto,Arial,sans-serif;
+      /* darker fall ombré */
       background: linear-gradient(180deg, #f7eadc 0%, #f4c089 35%, #e68a3a 62%, #b24d10 100%);
     }
-    .wrap{min-height:100%; display:flex; align-items:center; justify-content:center; padding:28px; position:relative; z-index:1}
-    /* warm cream card instead of stark white */
+    .wrap{min-height:100%;display:flex;align-items:center;justify-content:center;padding:28px;position:relative;z-index:1}
+    /* warm cream card (soft, not stark white) */
     .card{
       width:min(920px,100%);
       background: linear-gradient(180deg,var(--cream) 0%, var(--cream2) 60%, var(--cream3) 100%);
-      border-radius:28px; padding:32px; box-shadow:0 28px 70px rgba(90,51,36,.25), 0 0 0 1px rgba(90,51,36,.06);
-      position:relative; overflow:hidden;
+      border-radius:28px;padding:32px;
+      box-shadow:0 28px 70px rgba(90,51,36,.25), 0 0 0 1px rgba(90,51,36,.06);
+      position:relative;overflow:hidden;
     }
-
-    /* corner decor (flat pumpkins + leaves) */
-    .decor{position:absolute; pointer-events:none; opacity:.26}
-    .decor.tl{top:-14px; left:-14px}
-    .decor.tr{top:-12px; right:-16px; transform:scale(.96)}
-    .decor.bl{bottom:-18px; left:-12px; transform:scale(.98)}
-    .decor.br{bottom:-20px; right:-16px}
-    .decor svg{display:block}
 
     /* headings */
-    h1{
-      margin:0; font-family:'Great Vibes',cursive; font-size:56px; line-height:1; color:var(--wine); text-align:center;
-      text-shadow:0 1px 0 rgba(255,255,255,.4);
-    }
-    .subtitle{
-      margin:6px 0 14px; text-align:center; color:var(--chestnut); font-weight:900; letter-spacing:.25px;
-    }
-    .date{
-      margin:10px 0 8px; text-align:center; font-family:'Great Vibes',cursive; font-size:28px; color:#b23a48;
-    }
+    h1{margin:0;text-align:center;font-family:'Great Vibes',cursive;font-size:56px;color:var(--wine);text-shadow:0 1px 0 rgba(255,255,255,.4)}
+    .subtitle{margin:8px 0 14px;text-align:center;color:var(--chestnut);font-weight:900}
+    .date{margin:10px 0 8px;text-align:center;font-family:'Great Vibes',cursive;font-size:28px;color:#b23a48}
+    .note{font-size:14px;color:#6a5443;text-align:center}
 
-    /* ui */
-    .pill{ display:inline-block; background:#fff3e5; border:2px solid var(--pumpkin); padding:6px 14px; border-radius:999px; font-size:14px; margin:12px auto; }
-    .row{ display:flex; gap:12px; flex-wrap:wrap; justify-content:center; margin:16px 0; }
+    /* UI */
+    .pill{display:inline-block;background:#fff3e5;border:2px solid var(--pumpkin);padding:6px 14px;border-radius:999px;font-size:14px;margin:12px auto}
+    .row{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin:16px 0}
     button{
-      appearance:none; border:0; border-radius:999px; padding:16px 22px; font-weight:900; font-size:16px; cursor:pointer; display:flex; align-items:center; gap:8px; color:#fff;
-      background:linear-gradient(180deg,var(--pumpkin),var(--burnt)); box-shadow:0 10px 26px rgba(180,80,20,.32);
+      appearance:none;border:0;border-radius:999px;padding:16px 22px;
+      font-weight:900;font-size:16px;cursor:pointer;display:flex;align-items:center;gap:8px;color:#fff;
+      background:linear-gradient(180deg,var(--pumpkin),var(--burnt));box-shadow:0 10px 26px rgba(180,80,20,.32);
     }
     button:active{transform:translateY(1px)}
-    .ghost{ background:transparent; color:var(--burnt); outline:2px solid var(--pumpkin); }
+    .ghost{background:transparent;color:var(--burnt);outline:2px solid var(--pumpkin)}
 
-    .progress{ height:12px; background:#f7e1c6; border-radius:999px; overflow:hidden; margin:14px 0; outline:1px solid rgba(120,75,46,.18); width:min(560px,100%); }
-    .bar{ height:100%; width:0; background:linear-gradient(90deg,#ffd3a6,#ffd166,#f4978e,#bde7a1); transition:width .2s }
-    .note{ font-size:14px; color:#6a5443; text-align:center; }
+    .progress{height:12px;background:#f7e1c6;border-radius:999px;overflow:hidden;margin:14px 0;outline:1px solid rgba(120,75,46,.18);width:min(560px,100%)}
+    .bar{height:100%;width:0;background:linear-gradient(90deg,#ffd3a6,#ffd166,#f4978e,#bde7a1);transition:width .2s}
 
-    .grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(120px,1fr)); gap:14px; margin-top:16px }
-    .thumb{ width:110px; height:110px; border-radius:20px; object-fit:cover; background:#f8efe6; border:3px solid #e3b06d; box-shadow:0 8px 18px rgba(80,40,10,.18) }
+    .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:14px;margin-top:16px}
+    .thumb{width:110px;height:110px;border-radius:20px;object-fit:cover;background:#f8efe6;border:3px solid #e3b06d;box-shadow:0 8px 18px rgba(80,40,10,.18)}
 
-    footer{ margin-top:18px; text-align:center; color:var(--chestnut); font-weight:800 }
+    footer{margin-top:18px;text-align:center;color:var(--chestnut);font-weight:800}
 
-    /* falling leaves + acorns layer */
-    .fall-layer{ position:fixed; inset:0; pointer-events:none; overflow:hidden; z-index:0 }
-    .leaffall{ position:absolute; top:-80px; width:28px; height:28px; opacity:.8; filter:drop-shadow(0 8px 8px rgba(0,0,0,.12)) }
-    .leaffall svg{ width:28px; height:28px; display:block }
+    /* subtle falling leaves + acorns */
+    .fall-layer{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:0}
+    .leaffall{position:absolute;top:-80px;width:26px;height:26px;opacity:.75;filter:drop-shadow(0 8px 8px rgba(0,0,0,.12))}
+    .leaffall svg{width:26px;height:26px;display:block}
     @keyframes fallSwing{
-      0%{ transform:translate3d(var(--x,0), -80px, 0) rotate(0deg) }
-      50%{ transform:translate3d(calc(var(--x,0) + 40px), 50vh, 0) rotate(120deg) }
-      100%{ transform:translate3d(calc(var(--x,0) - 20px), 110vh, 0) rotate(260deg) }
+      0%{transform:translate3d(var(--x,0),-80px,0) rotate(0deg)}
+      50%{transform:translate3d(calc(var(--x,0) + 40px),50vh,0) rotate(120deg)}
+      100%{transform:translate3d(calc(var(--x,0) - 20px),110vh,0) rotate(260deg)}
     }
   </style>
 </head>
 <body>
-  <!-- animated falling leaves + acorns -->
+  <!-- animated falling layer -->
   <div class="fall-layer" id="fall"></div>
 
   <div class="wrap">
     <div class="card">
-      <!-- CORNER DECOR (simple flat illustrations) -->
-      <div class="decor tl">
-        <svg width="210" height="160" viewBox="0 0 210 160" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <!-- maple leaf -->
-          <path d="M62 65 l-14 -12 6 18 -18 -6 12 14 -18 6 22 6 -2 18 14 -12 14 12 -2 -18 22 -6 -18 -6 12 -14 -18 6 6 -18z" fill="#c44a3d"/>
-          <!-- pumpkin (three lobes) -->
-          <ellipse cx="135" cy="108" rx="40" ry="28" fill="#e8892a"/>
-          <ellipse cx="120" cy="108" rx="24" ry="30" fill="#f6a34a"/>
-          <ellipse cx="150" cy="108" rx="24" ry="30" fill="#d87018"/>
-          <rect x="130" y="78" width="12" height="16" rx="3" fill="#6a3b20"/>
-          <path d="M142 80 C154 70 166 74 178 66" stroke="#82a76f" stroke-width="4" stroke-linecap="round" fill="none"/>
-        </svg>
-      </div>
-      <div class="decor tr">
-        <svg width="230" height="170" viewBox="0 0 230 170" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <!-- oak leaf -->
-          <path d="M60 48c-14 6-14 22 0 26-12 6-8 22 6 22-6 10 6 18 16 12 8 14 28 6 24-8 16 4 22-12 12-20 14-4 10-20-6-18 8-10-8-22-18-12-4-12-18-12-24-2z" fill="#a34e1f"/>
-          <!-- pumpkin -->
-          <ellipse cx="166" cy="114" rx="42" ry="30" fill="#e8892a"/>
-          <ellipse cx="150" cy="114" rx="25" ry="30" fill="#f6a34a"/>
-          <ellipse cx="182" cy="114" rx="25" ry="30" fill="#d87018"/>
-          <rect x="162" y="84" width="12" height="16" rx="3" fill="#6a3b20"/>
-          <path d="M168 86 C178 70 196 72 210 66" stroke="#82a76f" stroke-width="4" stroke-linecap="round" fill="none"/>
-        </svg>
-      </div>
-      <div class="decor bl">
-        <svg width="220" height="170" viewBox="0 0 220 170" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <!-- golden leaf -->
-          <path d="M78 120c-18 6-20 24-6 30-12 6-2 20 12 16 6 12 24 10 26-2 12 6 22-8 12-16 12-4 10-20-4-20 8-10-6-22-16-12-6-10-16-8-24 4z" fill="#e0a106"/>
-          <!-- acorns -->
-          <ellipse cx="150" cy="130" rx="12" ry="10" fill="#7a4a1f"/>
-          <ellipse cx="150" cy="138" rx="11" ry="9" fill="#a6734a"/>
-          <ellipse cx="168" cy="134" rx="10" ry="8" fill="#7a4a1f"/>
-          <ellipse cx="168" cy="141" rx="9" ry="7" fill="#a6734a"/>
-        </svg>
-      </div>
-      <div class="decor br">
-        <svg width="220" height="160" viewBox="0 0 220 160" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <!-- sage leaf -->
-          <path d="M36 124c34-18 56-42 94-50 22-4 42-12 64-30-18 34-44 54-74 66-24 10-52 16-84 14z" fill="#7aa874"/>
-          <!-- mini pumpkins -->
-          <circle cx="164" cy="112" r="16" fill="#f6a34a"/>
-          <circle cx="186" cy="120" r="13" fill="#e8892a"/>
-          <rect x="160" y="96" width="8" height="10" rx="2" fill="#6a3b20"/>
-          <rect x="182" y="106" width="7" height="9" rx="2" fill="#6a3b20"/>
-        </svg>
-      </div>
-
-      <!-- CONTENT -->
       <h1>snap & share</h1>
       <p class="subtitle">welcome to brian & jennessa's vow renewal!</p>
 
@@ -171,7 +100,7 @@
 
       <footer>❤ thank you for celebrating 25 years of falling in love with us ❤</footer>
 
-      <!-- CLOUDINARY (direct unsigned upload) -->
+      <!-- Cloudinary (direct unsigned upload) -->
       <script>
         const CLOUDINARY_CLOUD = 'dftscam74';
         const CLOUDINARY_PRESET = 'vow_renewal';
@@ -248,14 +177,13 @@
         els.file2.addEventListener('change', (e)=>{ const f=e.target.files?.[0]; if(f) handleFiles(f); });
       </script>
 
-      <!-- FALLING LEAVES + ACORNS -->
+      <!-- Falling leaves + acorns (subtle) -->
       <script>
         (function(){
           const host = document.getElementById('fall');
           if(!host) return;
-          const colors = ['#b23a48','#e0a106','#f28c28','#7aa874','#a9471c','#8c2f00','#d97706'];
+          const colors = ['#b23a48','#e0a106','#f28c28','#7aa874','#a9471c','#8c2f00'];
           function leafSVG(color){
-            // simple maple silhouette
             return `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill="${color}" d="M12 2 l-2 5 -5 -2 2 5 -5 2 6 2 -1 6 5 -4 5 4 -1 -6 6 -2 -5 -2 2 -5 -5 2z"/></svg>`;
           }
           function acornSVG(){
@@ -271,21 +199,20 @@
             const x = Math.random()*window.innerWidth;
             el.style.setProperty('--x', x.toFixed(0)+'px');
             el.style.left = x+'px';
-            const dur = 8 + Math.random()*6; // 8–14s
+            const dur = 10 + Math.random()*6; // 10–16s (gentle)
             el.style.animation = `fallSwing ${dur}s linear forwards`;
-            // ~28% acorns, otherwise random leaf color
-            el.innerHTML = (Math.random() < 0.28 ? acornSVG() : leafSVG(colors[Math.floor(Math.random()*colors.length)]));
+            el.innerHTML = (Math.random() < 0.25 ? acornSVG() : leafSVG(colors[Math.floor(Math.random()*colors.length)]));
             host.appendChild(el);
-            setTimeout(()=> el.remove(), (dur+0.2)*1000);
+            setTimeout(()=> el.remove(), (dur+0.3)*1000);
           }
-          // initial burst
-          for(let i=0;i<14;i++) setTimeout(spawn, i*400);
+          // small initial burst
+          for(let i=0;i<8;i++) setTimeout(spawn, i*500);
           // gentle trickle
-          setInterval(spawn, 1200);
+          setInterval(spawn, 1500);
         })();
       </script>
 
-      <!-- FIREBASE (Firestore for gallery list) -->
+      <!-- Firebase (Firestore for gallery list) -->
       <script src="https://www.gstatic.com/firebasejs/9.6.11/firebase-app-compat.js"></script>
       <script src="https://www.gstatic.com/firebasejs/9.6.11/firebase-auth-compat.js"></script>
       <script src="https://www.gstatic.com/firebasejs/9.6.11/firebase-firestore-compat.js"></script>
