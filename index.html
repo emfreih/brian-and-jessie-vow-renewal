@@ -5,50 +5,50 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>snap & share – brian + jennessa</title>
   <meta name="description" content="scan → snap a photo → auto-upload to the shared album" />
-  <!-- cute fall vibes fonts -->
+  <!-- cozy fall fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
   <style>
     :root{
-      /* fall-boho palette */
-      --bg:#0f0e10;           /* deep charcoal */
-      --bg-grad-1:#1a171a;    /* subtle gradient start */
-      --bg-grad-2:#131215;    /* subtle gradient end */
-      --card:#151518;         /* card surface */
-      --text:#f6f6f7;
-      --muted:#b8bac2;
-      --accent:#e6b07c;       /* pumpkin spice */
-      --accent-2:#c87d5b;     /* terracotta */
-      --ok:#7ddc93;
-      --err:#ff8a8a;
-      --ring:#f3d3a5;         /* soft glow */
+      /* light, cozy fall palette */
+      --bg1:#fff8f0;         /* warm cream */
+      --bg2:#ffe7d1;         /* soft apricot */
+      --leaf1:#c76f45;       /* cinnamon */
+      --leaf2:#e1a866;       /* butterscotch */
+      --leaf3:#9dbd77;       /* sage */
+      --text:#3b2f2a;        /* cocoa */
+      --muted:#6e625c;       /* taupe */
+      --card:#ffffff;        /* white card */
+      --ring:#f3d3a5;        /* glow */
+      --accent:#cf7f56;      /* pumpkin */
+      --accent2:#b86542;     /* roasted chestnut */
+      --ok:#2e7d32;          /* green ok */
+      --err:#c62828;         /* red err */
     }
     *{box-sizing:border-box}
-    html,body{margin:0;height:100%;color:var(--text);font-family:'Nunito',system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;background:radial-gradient(1200px 800px at 20% -10%,var(--bg-grad-1),transparent),radial-gradient(1000px 600px at 120% 20%,#231b16,transparent),linear-gradient(180deg,var(--bg-grad-2),var(--bg));}
-    .wrap{min-height:100%;display:flex;align-items:center;justify-content:center;padding:24px}
-    .card{width:min(760px,100%);background:color-mix(in srgb,var(--card) 92%, transparent);backdrop-filter:saturate(120%) blur(4px);border-radius:24px;padding:26px;box-shadow:0 20px 50px rgba(0,0,0,.45),inset 0 0 0 1px rgba(255,255,255,.04);position:relative;overflow:hidden}
-    .card:before,.card:after{content:"";position:absolute;inset:auto auto -80px -80px;width:220px;height:220px;background:conic-gradient(from 180deg at 50% 50%,var(--accent) 0 25%,var(--accent-2) 25% 50%,transparent 50% 100%);opacity:.08;border-radius:50%;filter:blur(10px)}
-    .card:after{inset:-80px -80px auto auto}
-    h1{margin:0 0 6px;font-family:'Playfair Display',serif;font-weight:700;font-size:34px;letter-spacing:.2px;line-height:1.15;display:flex;gap:10px;align-items:center}
-    h1 .heart{display:inline-flex;width:26px;height:26px;align-items:center;justify-content:center;border-radius:999px;background:linear-gradient(180deg,var(--accent),var(--accent-2));box-shadow:0 6px 18px rgba(231,152,106,.35);}
-    h1 .heart:before{content:"❤";font-size:14px;color:#1a1a1a;filter:drop-shadow(0 1px 1px rgba(0,0,0,.6))}
-    p{margin:6px 0;color:var(--muted);line-height:1.55}
+    html,body{margin:0;height:100%;color:var(--text);font-family:'Quicksand',system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;background:linear-gradient(180deg,var(--bg1),var(--bg2));}
+    .wrap{min-height:100%;display:flex;align-items:center;justify-content:center;padding:28px}
+    .card{width:min(820px,100%);background:var(--card);border-radius:26px;padding:28px;box-shadow:0 18px 50px rgba(120,75,46,.12),0 0 0 1px rgba(120,75,46,.08);position:relative;overflow:hidden}
+    h1{margin:0 0 8px;font-family:'Playfair Display',serif;font-weight:700;font-size:36px;letter-spacing:.2px;line-height:1.15;display:flex;gap:10px;align-items:center;color:#2f2521}
+    h1 .heart{display:inline-flex;width:30px;height:30px;align-items:center;justify-content:center;border-radius:999px;background:linear-gradient(180deg,var(--accent),var(--accent2));box-shadow:0 6px 18px rgba(200,100,60,.25);}
+    h1 .heart:before{content:"❤";font-size:16px;color:#fff;filter:drop-shadow(0 1px 1px rgba(0,0,0,.25))}
+    p{margin:6px 0;color:var(--muted);line-height:1.6}
     .row{display:flex;gap:12px;flex-wrap:wrap;margin-top:14px}
     button,.btn{appearance:none;border:0;border-radius:16px;padding:16px 18px;font-weight:800;font-size:16px;cursor:pointer;text-transform:lowercase;letter-spacing:.2px}
-    .primary{background:linear-gradient(180deg,var(--accent),var(--accent-2));color:#201a17;box-shadow:0 8px 24px rgba(231,152,106,.3)}
+    .primary{background:linear-gradient(180deg,var(--accent),var(--accent2));color:#fff;box-shadow:0 8px 24px rgba(200,100,60,.2)}
     .primary:active{transform:translateY(1px)}
-    .ghost{background:transparent;color:var(--text);outline:1px solid #2a2b2f}
+    .ghost{background:transparent;color:var(--text);outline:1px solid rgba(120,75,46,.25)}
     .hidden{display:none}
-    .progress{height:12px;background:#26262a;border-radius:999px;overflow:hidden;margin:14px 0;outline:1px solid rgba(255,255,255,.06)}
+    .progress{height:12px;background:#f2e6db;border-radius:999px;overflow:hidden;margin:14px 0;outline:1px solid rgba(120,75,46,.15)}
     .bar{height:100%;width:0;background:linear-gradient(90deg,#ffd3a6,#ffc0cb,#d7e7ff);transition:width .2s}
-    .thumb{width:96px;height:96px;border-radius:18px;object-fit:cover;background:#111;border:1px solid #2a2b2f;box-shadow:0 6px 16px rgba(0,0,0,.25)}
+    .thumb{width:96px;height:96px;border-radius:18px;object-fit:cover;background:#f6efe7;border:1px solid rgba(120,75,46,.18);box-shadow:0 6px 16px rgba(120,75,46,.12)}
     .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:12px;margin-top:14px}
-    .note{font-size:13px;color:#c9cbd3}
-    .pill{display:inline-flex;gap:8px;align-items:center;background:#1d1f25;border:1px solid #2b2d33;padding:8px 12px;border-radius:999px;color:#f1efe9;font-size:13px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.03)}
+    .note{font-size:13px;color:#7d6f69}
+    .pill{display:inline-flex;gap:8px;align-items:center;background:#fff6ec;border:1px solid rgba(120,75,46,.25);padding:8px 12px;border-radius:999px;color:#4b3d37;font-size:13px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.6)}
     .ok{color:var(--ok)}.err{color:var(--err)}
-    /* cute corner foliage using svg */
-    .corner{position:absolute;pointer-events:none;opacity:.16}
+    /* corner leaves */
+    .corner{position:absolute;pointer-events:none;opacity:.5}
     .corner.tl{top:-6px;left:-6px;transform:rotate(-8deg)}
     .corner.br{bottom:-10px;right:-10px;transform:rotate(12deg)}
   </style>
@@ -57,14 +57,16 @@
   <div class="wrap">
     <div class="card">
       <!-- decorative corners -->
-      <svg class="corner tl" width="160" height="120" viewBox="0 0 200 160" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20 120 C40 80, 80 60, 110 70 C140 80, 170 40, 190 20" stroke="url(#g1)" stroke-width="10" stroke-linecap="round"/><defs><linearGradient id="g1" x1="0" y1="0" x2="200" y2="0"><stop stop-color="#e6b07c"/><stop offset="1" stop-color="#c87d5b"/></linearGradient></defs></svg>
-      <svg class="corner br" width="180" height="140" viewBox="0 0 220 180" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 30 C30 60, 60 90, 100 95 C130 100, 170 130, 210 160" stroke="url(#g2)" stroke-width="12" stroke-linecap="round"/><defs><linearGradient id="g2" x1="0" y1="0" x2="220" y2="0"><stop stop-color="#e6b07c"/><stop offset="1" stop-color="#c87d5b"/></linearGradient></defs></svg>
+      <svg class="corner tl" width="180" height="140" viewBox="0 0 220 180" xmlns="http://www.w3.org/2000/svg"><path d="M20 150 C60 110, 80 70, 120 80 C150 88, 180 56, 210 30" fill="none" stroke="url(#g1)" stroke-width="12" stroke-linecap="round"/><defs><linearGradient id="g1" x1="0" y1="0" x2="220" y2="0"><stop stop-color="var(--leaf1)"/><stop offset="1" stop-color="var(--leaf2)"/></linearGradient></defs></svg>
+      <svg class="corner br" width="200" height="160" viewBox="0 0 240 200" xmlns="http://www.w3.org/2000/svg"><path d="M10 40 C40 70, 70 110, 120 115 C160 120, 190 150, 230 180" fill="none" stroke="url(#g2)" stroke-width="14" stroke-linecap="round"/><defs><linearGradient id="g2" x1="0" y1="0" x2="240" y2="0"><stop stop-color="var(--leaf2)"/><stop offset="1" stop-color="var(--leaf3)"/></linearGradient></defs></svg>
 
       <h1><span class="heart"></span> snap & share</h1>
       <p>scan → tap → snap → it auto-uploads to the album for <strong>brian & jennessa</strong>.</p>
 
+      <!-- status line -->
       <p id="status" class="pill">connecting…</p>
 
+      <!-- camera launcher -->
       <div class="row">
         <button id="shoot" class="primary">take a photo</button>
         <button id="pick" class="ghost">pick from camera roll</button>
@@ -83,15 +85,15 @@
 
       <p class="note">tip: on iphone, safari won’t open the camera without a tap. that’s why there’s a big button above :)</p>
 
-      <hr style="margin:18px 0;border:0;border-top:1px solid #2a2b2f">admin quick‑guide: this page needs a tiny firebase setup (free). paste your keys below and deploy anywhere (netlify/vercel/github pages). if you prefer no setup, use the bundled <em>Dropbox File Request</em> fallback link (set it in the <code>FALLBACK_UPLOAD_URL</code>).</p>
+      <hr style="margin:18px 0;border:0;border-top:1px solid rgba(120,75,46,.18)"/>
+      <p class="note">admin quick‑guide: this page needs a tiny firebase setup (free). we already pasted your keys below. make sure in firebase you have: <em>authentication → anonymous on</em>, <em>storage created</em>, and <em>firestore created</em>, then you’re done.</p>
 
-      <!-- ===== 1) PASTE YOUR FIREBASE CONFIG HERE ===== -->
+      <!-- ===== 1) YOUR FIREBASE CONFIG (PASTED) ===== -->
       <script>
       const EVENT_ID = new URL(location.href).searchParams.get('event') || 'vow-renewal';
-
       const FALLBACK_UPLOAD_URL = '';
 
-      // your real firebase config:
+      // real firebase config (yours):
       const firebaseConfig = {
         apiKey: "AIzaSyDK81QkPOye3fLS605xiknPX9gBCcJoy90",
         authDomain: "j-b-vow-renewal.firebaseapp.com",
@@ -103,7 +105,7 @@
       };
       </script>
 
-      <!-- Firebase SDKs -->
+      <!-- Firebase SDKs (compat for simplicity) -->
       <script src="https://www.gstatic.com/firebasejs/9.6.11/firebase-app-compat.js"></script>
       <script src="https://www.gstatic.com/firebasejs/9.6.11/firebase-auth-compat.js"></script>
       <script src="https://www.gstatic.com/firebasejs/9.6.11/firebase-storage-compat.js"></script>
@@ -123,25 +125,32 @@
         gallery: document.getElementById('gallery'),
       };
 
-      const hasFirebase = (typeof firebaseConfig !== 'undefined');
-
       function setStatus(text, ok=false, err=false){
         els.status.textContent = text;
         els.status.classList.toggle('ok', ok); els.status.classList.toggle('err', err);
       }
 
-      function fallbackUpload(file){
-        if(!FALLBACK_UPLOAD_URL){
-          setStatus('no upload configured. set firebase config or a dropbox link.', false, true);
-          return;
+      // init + anonymous auth
+      let svc = null;
+      (async ()=>{
+        try{
+          const app = firebase.initializeApp(firebaseConfig);
+          const auth = firebase.auth();
+          await auth.signInAnonymously();
+          svc = {app, auth, db: firebase.firestore(), storage: firebase.storage()};
+          setStatus('ready — tap a button to snap a pic', true);
+        }catch(e){
+          console.error(e);
+          setStatus('auth failed — in firebase: Authentication → Sign-in method → enable Anonymous. then reload.', false, true);
         }
-        const a = document.createElement('a');
-        a.href = URL.createObjectURL(file);
-        a.download = `photo-${Date.now()}.jpg`;
-        a.click();
-        setTimeout(()=>{ window.location.href = FALLBACK_UPLOAD_URL; }, 400);
-      }
+      })();
 
+      function openCamera(){ els.file.click(); }
+      function openPicker(){ els.file2.click(); }
+      els.shoot.addEventListener('click', openCamera);
+      els.pick.addEventListener('click', openPicker);
+
+      // compress to ~1600px wide for fast uploads
       async function compressImage(file, maxW=1600){
         const img = new Image();
         img.src = URL.createObjectURL(file);
@@ -156,31 +165,11 @@
         return new File([blob], `photo-${Date.now()}.jpg`, {type:'image/jpeg'});
       }
 
-      async function ensureAuth(){
-        if(!hasFirebase) return null;
-        try{
-          const app = firebase.initializeApp(firebaseConfig);
-          const auth = firebase.auth();
-          await auth.signInAnonymously();
-          setStatus('ready — tap a button to snap a pic', true);
-          return {app, auth, db: firebase.firestore(), storage: firebase.storage()};
-        }catch(e){ setStatus('firebase auth failed; using fallback', false, true); return null; }
-      }
-
-      let svc = null;
-      (async ()=>{ svc = await ensureAuth(); if(!svc && !FALLBACK_UPLOAD_URL){ setStatus('tap a button (no-backend mode)', true); }})();
-
-      function openCamera(){ els.file.click(); }
-      function openPicker(){ els.file2.click(); }
-
-      els.shoot.addEventListener('click', openCamera);
-      els.pick.addEventListener('click', openPicker);
-
       async function handleFiles(file){
         try{
+          if(!svc){ setStatus('not ready yet — refresh after enabling anonymous auth.', false, true); return; }
           setStatus('processing photo…');
           const small = await compressImage(file);
-          if(!svc){ fallbackUpload(small); return; }
           els.prog.classList.remove('hidden');
           els.bar.style.width = '5%';
           const path = `events/${EVENT_ID}/${Date.now()}.jpg`;
@@ -199,8 +188,7 @@
           loadGallery();
         }catch(e){
           console.error(e);
-          setStatus('upload failed — trying fallback…', false, true);
-          fallbackUpload(file);
+          setStatus('upload failed. make sure Storage + Firestore exist in firebase (clicked “get started”).', false, true);
         }
       }
 
